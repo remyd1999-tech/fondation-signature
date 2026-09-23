@@ -63,6 +63,72 @@
             </p>
           </div>
 
+          <div class="tuner" aria-label="Réglages internes de la signature">
+            <p class="tuner__label">Réglages internes</p>
+            <div class="tuner__grid">
+              <label class="tuner__field" for="tune-font-size">
+                <span class="tuner__name">
+                  Taille du nom
+                  <output id="tune-font-size-value" for="tune-font-size">15</output>px
+                </span>
+                <input
+                  id="tune-font-size"
+                  class="tuner__range"
+                  type="range"
+                  min="12"
+                  max="22"
+                  step="1"
+                  value="15"
+                />
+              </label>
+              <label class="tuner__field" for="tune-name-title-gap">
+                <span class="tuner__name">
+                  Interlignage nom / fonction
+                  <output id="tune-name-title-gap-value" for="tune-name-title-gap">2</output>px
+                </span>
+                <input
+                  id="tune-name-title-gap"
+                  class="tuner__range"
+                  type="range"
+                  min="0"
+                  max="16"
+                  step="1"
+                  value="2"
+                />
+              </label>
+              <label class="tuner__field" for="tune-text-logo-gap">
+                <span class="tuner__name">
+                  Marge texte → logo
+                  <output id="tune-text-logo-gap-value" for="tune-text-logo-gap">40</output>px
+                </span>
+                <input
+                  id="tune-text-logo-gap"
+                  class="tuner__range"
+                  type="range"
+                  min="8"
+                  max="80"
+                  step="1"
+                  value="40"
+                />
+              </label>
+              <label class="tuner__field" for="tune-logo-width">
+                <span class="tuner__name">
+                  Largeur du logo
+                  <output id="tune-logo-width-value" for="tune-logo-width">378</output>px
+                </span>
+                <input
+                  id="tune-logo-width"
+                  class="tuner__range"
+                  type="range"
+                  min="200"
+                  max="520"
+                  step="2"
+                  value="378"
+                />
+              </label>
+            </div>
+          </div>
+
           <div class="preview-frame">
             <div
               id="signature-preview"
@@ -104,6 +170,11 @@
                     Créez une nouvelle signature ou ouvrez une signature
                     existante, puis collez (<kbd>Ctrl</kbd>+<kbd>V</kbd> ou
                     <kbd>⌘</kbd>+<kbd>V</kbd>).
+                  </li>
+                  <li>
+                    Cochez la case qui permet d’insérer la signature
+                    <strong>avant le texte cité</strong> dans les réponses et de
+                    <strong>supprimer la ligne « -- »</strong> qui précède.
                   </li>
                   <li>
                     Enregistrez les modifications en bas de page. Si l’image ne

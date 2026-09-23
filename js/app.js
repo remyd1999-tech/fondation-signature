@@ -47,14 +47,28 @@
     },
   ];
 
-  const LOGO_WIDTH = 420;
-  const LOGO_HEIGHT = 101;
+  const LOGO_NATURAL_WIDTH = 4000;
+  const LOGO_NATURAL_HEIGHT = 957;
 
   const selectEl = document.getElementById("person-select");
   const previewEl = document.getElementById("signature-preview");
   const copyBtn = document.getElementById("copy-btn");
   const selectBtn = document.getElementById("select-btn");
   const statusEl = document.getElementById("copy-status");
+
+  const tuneFontSize = document.getElementById("tune-font-size");
+  const tuneNameTitleGap = document.getElementById("tune-name-title-gap");
+  const tuneTextLogoGap = document.getElementById("tune-text-logo-gap");
+  const tuneLogoWidth = document.getElementById("tune-logo-width");
+
+  const tuneFontSizeValue = document.getElementById("tune-font-size-value");
+  const tuneNameTitleGapValue = document.getElementById(
+    "tune-name-title-gap-value"
+  );
+  const tuneTextLogoGapValue = document.getElementById(
+    "tune-text-logo-gap-value"
+  );
+  const tuneLogoWidthValue = document.getElementById("tune-logo-width-value");
 
   let currentPerson = null;
 
@@ -70,6 +84,34 @@
       .replace(/"/g, "&quot;");
   }
 
+  function getSettings() {
+    const fontSize = Number(tuneFontSize.value);
+    const nameTitleGap = Number(tuneNameTitleGap.value);
+    const textToLogoGap = Number(tuneTextLogoGap.value);
+    const logoWidth = Number(tuneLogoWidth.value);
+    const logoHeight = Math.round(
+      (logoWidth * LOGO_NATURAL_HEIGHT) / LOGO_NATURAL_WIDTH
+    );
+    const lineHeight = fontSize + 3;
+
+    return {
+      fontSize,
+      lineHeight,
+      nameTitleGap,
+      textToLogoGap,
+      logoWidth,
+      logoHeight,
+    };
+  }
+
+  function syncTunerOutputs() {
+    const settings = getSettings();
+    tuneFontSizeValue.textContent = String(settings.fontSize);
+    tuneNameTitleGapValue.textContent = String(settings.nameTitleGap);
+    tuneTextLogoGapValue.textContent = String(settings.textToLogoGap);
+    tuneLogoWidthValue.textContent = String(settings.logoWidth);
+  }
+
   /**
    * Table-based HTML signature for Apple Mail / Outlook / Gmail.
    * Absolute image URL so pasted signatures keep loading the logo from GitHub Pages.
@@ -78,26 +120,34 @@
     const name = escapeHtml(person.name);
     const title = escapeHtml(person.title);
     const src = escapeHtml(logoUrl());
+    const {
+      fontSize,
+      lineHeight,
+      nameTitleGap,
+      textToLogoGap,
+      logoWidth,
+      logoHeight,
+    } = getSettings();
 
     return [
-      '<!-- Fondation Charles-Albert Frère — signature e-mail -->',
+      "<!-- Fondation Charles-Albert Frère — signature e-mail -->",
       '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;border-spacing:0;mso-table-lspace:0pt;mso-table-rspace:0pt;background-color:#ffffff;">',
       "  <tr>",
-      '    <td align="left" style="padding:0;margin:0;font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:20px;font-weight:bold;color:#000000;">',
+      `    <td align="left" style="padding:0;margin:0;font-family:Helvetica,Arial,sans-serif;font-size:${fontSize}px;line-height:${lineHeight}px;font-weight:bold;color:#000000;">`,
       `      ${name}`,
       "    </td>",
       "  </tr>",
       "  <tr>",
-      '    <td align="left" style="padding:2px 0 0 0;margin:0;font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:19px;font-style:italic;font-weight:normal;color:#000000;">',
+      `    <td align="left" style="padding:${nameTitleGap}px 0 0 0;margin:0;font-family:Helvetica,Arial,sans-serif;font-size:${fontSize}px;line-height:${lineHeight}px;font-style:italic;font-weight:normal;color:#000000;">`,
       `      ${title}`,
       "    </td>",
       "  </tr>",
       "  <tr>",
-      '    <td align="left" style="padding:0;margin:0;font-size:0;line-height:0;height:18px;">&nbsp;</td>',
+      `    <td align="left" style="padding:0;margin:0;font-size:0;line-height:0;height:${textToLogoGap}px;">&nbsp;</td>`,
       "  </tr>",
       "  <tr>",
       '    <td align="left" style="padding:0;margin:0;">',
-      `      <img src="${src}" width="${LOGO_WIDTH}" height="${LOGO_HEIGHT}" alt="Fondation Charles-Albert Frère — Rue de la Blanche Borne 12, 6280 Gerpinnes, Belgique" style="display:block;border:0;outline:none;text-decoration:none;width:${LOGO_WIDTH}px;max-width:100%;height:auto;background-color:#ffffff;" />`,
+      `      <img src="${src}" width="${logoWidth}" height="${logoHeight}" alt="Fondation Charles-Albert Frère — Rue de la Blanche Borne 12, 6280 Gerpinnes, Belgique" style="display:block;border:0;outline:none;text-decoration:none;width:${logoWidth}px;max-width:100%;height:auto;background-color:#ffffff;" />`,
       "    </td>",
       "  </tr>",
       "</table>",
@@ -164,7 +214,9 @@
           "text/plain": new Blob([plain], { type: "text/plain" }),
         });
         await navigator.clipboard.write([item]);
-        setStatus("Signature copiée. Vous pouvez maintenant la coller dans votre client e-mail.");
+        setStatus(
+          "Signature copiée. Vous pouvez maintenant la coller dans votre client e-mail."
+        );
         return;
       }
     } catch (_) {
@@ -175,7 +227,9 @@
       selectPreviewContents();
       const ok = document.execCommand("copy");
       if (!ok) throw new Error("execCommand failed");
-      setStatus("Signature copiée. Vous pouvez maintenant la coller dans votre client e-mail.");
+      setStatus(
+        "Signature copiée. Vous pouvez maintenant la coller dans votre client e-mail."
+      );
     } catch (_) {
       selectPreviewContents();
       setStatus(
@@ -210,7 +264,20 @@
     setStatus("Aperçu sélectionné. Appuyez sur Ctrl+C (ou ⌘+C) pour copier.");
   });
 
+  for (const input of [
+    tuneFontSize,
+    tuneNameTitleGap,
+    tuneTextLogoGap,
+    tuneLogoWidth,
+  ]) {
+    input.addEventListener("input", () => {
+      syncTunerOutputs();
+      if (currentPerson) renderPreview(currentPerson);
+    });
+  }
+
   populateSelect();
+  syncTunerOutputs();
 
   const initialId = new URLSearchParams(window.location.search).get("person");
   if (initialId && PEOPLE.some((p) => p.id === initialId)) {
