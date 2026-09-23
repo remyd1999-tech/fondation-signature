@@ -30,10 +30,7 @@ body {
   min-height: 100vh;
   color: var(--ink);
   font-family: var(--font);
-  background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(47, 93, 80, 0.08), transparent 55%),
-    radial-gradient(900px 500px at 100% 0%, rgba(18, 18, 18, 0.05), transparent 50%),
-    linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+  background: var(--white);
   line-height: 1.5;
 }
 
@@ -59,10 +56,9 @@ body {
 
 .hero__title {
   margin: 0;
-  max-width: 12ch;
-  font-family: var(--display);
+  font-family: var(--font);
   font-size: clamp(2.4rem, 6vw, 4.2rem);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
@@ -221,55 +217,6 @@ body {
 
 .status--error {
   color: #8a2f2f;
-}
-
-.tuner {
-  margin: 0.85rem 0 1rem;
-  padding: 0.85rem 0.95rem 1rem;
-  border: 1px dashed color-mix(in srgb, var(--line) 90%, var(--muted));
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--paper-deep) 55%, transparent);
-}
-
-.tuner__label {
-  margin: 0 0 0.75rem;
-  font-size: 0.72rem;
-  font-weight: 650;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.tuner__grid {
-  display: grid;
-  gap: 0.85rem;
-}
-
-.tuner__field {
-  display: grid;
-  gap: 0.35rem;
-}
-
-.tuner__name {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-  font-size: 0.88rem;
-  color: var(--ink-soft);
-}
-
-.tuner__name output {
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
-  color: var(--ink);
-}
-
-.tuner__range {
-  width: 100%;
-  margin: 0;
-  accent-color: var(--focus);
-  cursor: pointer;
 }
 
 .preview-frame {
