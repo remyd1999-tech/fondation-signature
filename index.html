@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fondation Charles-Albert Frère — Signatures e-mail</title>
+    <meta
+      name="description"
+      content="Générez et copiez votre signature e-mail officielle de la Fondation Charles-Albert Frère."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="hero__eyebrow">Outil interne</p>
+        <h1 class="hero__title">Fondation Charles-Albert Frère</h1>
+        <p class="hero__lead">
+          Sélectionnez votre nom, prévisualisez votre signature, puis copiez-la
+          pour la coller dans votre client de messagerie.
+        </p>
+      </header>
+
+      <main class="layout">
+        <section class="panel panel--controls" aria-labelledby="select-heading">
+          <h2 id="select-heading" class="panel__title">Votre identité</h2>
+          <label class="field" for="person-select">
+            <span class="field__label">Nom</span>
+            <select id="person-select" class="field__select">
+              <option value="">Choisissez votre nom…</option>
+            </select>
+          </label>
+
+          <div class="actions">
+            <button
+              type="button"
+              id="copy-btn"
+              class="btn btn--primary"
+              disabled
+            >
+              Copier la signature
+            </button>
+            <button type="button" id="select-btn" class="btn btn--ghost" disabled>
+              Sélectionner l’aperçu
+            </button>
+          </div>
+          <p id="copy-status" class="status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="panel panel--preview" aria-labelledby="preview-heading">
+          <div class="panel__header">
+            <h2 id="preview-heading" class="panel__title">Aperçu</h2>
+            <p class="panel__hint">
+              La signature ci-dessous est formatée pour Apple Mail, Outlook et
+              Gmail.
+            </p>
+          </div>
+
+          <div class="preview-frame">
+            <div
+              id="signature-preview"
+              class="signature-preview signature-preview--empty"
+              tabindex="0"
+              aria-label="Aperçu de la signature e-mail"
+            >
+              <p class="signature-preview__placeholder">
+                Sélectionnez votre nom pour afficher votre signature.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel panel--instructions" aria-labelledby="help-heading">
+          <h2 id="help-heading" class="panel__title">
+            Comment installer votre signature
+          </h2>
+          <p class="panel__intro">
+            Après avoir copié votre signature, suivez les étapes correspondant à
+            votre logiciel de messagerie.
+          </p>
+
+          <div class="accordion">
+            <details class="accordion__item" open>
+              <summary class="accordion__summary">Gmail (navigateur)</summary>
+              <div class="accordion__body">
+                <ol>
+                  <li>Cliquez sur <strong>Copier la signature</strong> ci-dessus.</li>
+                  <li>
+                    Dans Gmail, ouvrez <strong>Paramètres</strong> (icône
+                    d’engrenage) → <strong>Voir tous les paramètres</strong>.
+                  </li>
+                  <li>
+                    Dans l’onglet <strong>Général</strong>, descendez jusqu’à la
+                    section <strong>Signature</strong>.
+                  </li>
+                  <li>
+                    Créez une nouvelle signature ou ouvrez une signature
+                    existante, puis collez (<kbd>Ctrl</kbd>+<kbd>V</kbd> ou
+                    <kbd>⌘</kbd>+<kbd>V</kbd>).
+                  </li>
+                  <li>
+                    Enregistrez les modifications en bas de page. Si l’image ne
+                    s’affiche pas immédiatement, envoyez-vous un e-mail test :
+                    Gmail charge parfois les images au premier envoi.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary class="accordion__summary">Apple Mail (Mac)</summary>
+              <div class="accordion__body">
+                <ol>
+                  <li>Cliquez sur <strong>Copier la signature</strong> ci-dessus.</li>
+                  <li>
+                    Ouvrez <strong>Mail</strong> → <strong>Réglages</strong> (ou
+                    Préférences) → onglet <strong>Signatures</strong>.
+                  </li>
+                  <li>
+                    Sélectionnez votre compte, créez une nouvelle signature, puis
+                    collez dans la zone d’édition.
+                  </li>
+                  <li>
+                    Décochez si nécessaire
+                    <em>« Toujours utiliser ma police de message par défaut »</em>
+                    afin de conserver la mise en forme.
+                  </li>
+                  <li>
+                    Associez la signature à votre compte. L’image s’affiche
+                    correctement tant que la page de cet outil reste accessible
+                    en ligne (GitHub Pages).
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary class="accordion__summary">
+                Outlook (Windows — application)
+              </summary>
+              <div class="accordion__body">
+                <ol>
+                  <li>Cliquez sur <strong>Copier la signature</strong> ci-dessus.</li>
+                  <li>
+                    Dans Outlook : <strong>Fichier</strong> →
+                    <strong>Options</strong> → <strong>Courrier</strong> →
+                    <strong>Signatures…</strong>.
+                  </li>
+                  <li>
+                    Créez une nouvelle signature. Collez directement dans
+                    l’éditeur (<kbd>Ctrl</kbd>+<kbd>V</kbd>).
+                  </li>
+                  <li>
+                    Si la mise en forme semble incorrecte, collez d’abord dans
+                    <strong>Word</strong>, vérifiez l’aperçu, puis recopiez vers
+                    Outlook.
+                  </li>
+                  <li>
+                    Définissez cette signature comme signature par défaut pour
+                    les nouveaux messages et les réponses, puis validez avec
+                    <strong>OK</strong>.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary class="accordion__summary">
+                Outlook (Mac) &amp; Outlook sur le web
+              </summary>
+              <div class="accordion__body">
+                <ol>
+                  <li>Cliquez sur <strong>Copier la signature</strong> ci-dessus.</li>
+                  <li>
+                    <strong>Outlook Mac :</strong> Outlook → Réglages →
+                    Signatures → collez dans la signature.
+                  </li>
+                  <li>
+                    <strong>Outlook sur le web :</strong> Paramètres →
+                    Compte → Signatures → collez le contenu, puis enregistrez.
+                  </li>
+                  <li>
+                    Envoyez-vous un message test pour vérifier que le logo
+                    s’affiche bien.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="accordion__item">
+              <summary class="accordion__summary">Conseils utiles</summary>
+              <div class="accordion__body">
+                <ul>
+                  <li>
+                    Vous pouvez aussi cliquer sur
+                    <strong>Sélectionner l’aperçu</strong>, puis utiliser
+                    <kbd>Ctrl</kbd>+<kbd>C</kbd> / <kbd>⌘</kbd>+<kbd>C</kbd>.
+                  </li>
+                  <li>
+                    Le logo est hébergé avec cet outil : une fois publié sur
+                    GitHub Pages, l’image reste disponible pour tous vos
+                    destinataires.
+                  </li>
+                  <li>
+                    En mode sombre, certains clients inversent les couleurs.
+                    Notre signature est conçue sur fond blanc pour limiter ces
+                    effets.
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>
+          Fondation Charles-Albert Frère · Rue de la Blanche Borne 12, 6280
+          Gerpinnes, Belgique
+        </p>
+      </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
